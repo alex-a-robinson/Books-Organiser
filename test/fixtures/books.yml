@@ -2,8 +2,10 @@
 
 one:
   title: MyString
-  desc: MyText
+  rating: 1
+  read: false
 
 two:
   title: MyString
-  desc: MyText
+  rating: 1
+  read: false

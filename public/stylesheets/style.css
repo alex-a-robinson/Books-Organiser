@@ -1,0 +1,25 @@
+table {
+  border-collapse: collapse;
+  width: 400px;
+  margin: auto;
+}
+
+table, th, td {
+  border: 1px solid #000000;
+}
+
+#container {
+  padding: 5px;
+  text-align: center;
+  width: 160px;
+  margin: auto;
+  background-color: #3C998D;
+}
+
+#error_explanation {
+  background-color: #FFB300
+}
+
+form {
+  margin: auto;
+}
