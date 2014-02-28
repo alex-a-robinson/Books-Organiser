@@ -3863,3 +3863,2815 @@ Processing by BooksController#index as HTML
   [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
   Rendered books/index.html.erb within layouts/application (19.2ms)
 Completed 200 OK in 27ms (Views: 25.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2014-02-28 17:41:04 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 92ms (Views: 72.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 17:41:05 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddCoverToBooks (20140228175730)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "books" ADD "img_name" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "books" ADD "img_data" blob
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "books" ADD "img_filename" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "books" ADD "img_mime_type" varchar(255)
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140228175730"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveImgNameFromBooks (20140228180900)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TEMPORARY TABLE "abooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "rating" integer, "read" boolean, "created_at" datetime, "updated_at" datetime, "img_name" varchar(255), "img_data" blob, "img_filename" varchar(255), "img_mime_type" varchar(255)) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "books"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "abooks" ("id","title","rating","read","created_at","updated_at","img_name","img_data","img_filename","img_mime_type") VALUES (1, 'The hithikers guide to the galaxy', 5, 't', '2014-02-27 22:10:58.048766', '2014-02-27 22:10:58.048766', NULL, NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "abooks" ("id","title","rating","read","created_at","updated_at","img_name","img_data","img_filename","img_mime_type") VALUES (2, 'test', 2, 'f', '2014-02-27 22:11:34.223805', '2014-02-27 22:11:34.223805', NULL, NULL, NULL, NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "abooks" ("id","title","rating","read","created_at","updated_at","img_name","img_data","img_filename","img_mime_type") VALUES (3, 'You', 4, NULL, '2014-02-27 22:18:23.780242', '2014-02-27 22:18:23.780242', NULL, NULL, NULL, NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "abooks" ("id","title","rating","read","created_at","updated_at","img_name","img_data","img_filename","img_mime_type") VALUES (4, 'What', 2, 'f', '2014-02-27 22:19:57.889951', '2014-02-27 22:19:57.889951', NULL, NULL, NULL, NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "abooks" ("id","title","rating","read","created_at","updated_at","img_name","img_data","img_filename","img_mime_type") VALUES (5, '433', 2, 't', '2014-02-27 22:20:16.189722', '2014-02-27 22:20:16.189722', NULL, NULL, NULL, NULL)[0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "books"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "rating" integer, "read" boolean, "created_at" datetime, "updated_at" datetime, "img_data" blob, "img_filename" varchar(255), "img_mime_type" varchar(255)) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "abooks"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "books" ("id","title","rating","read","created_at","updated_at","img_data","img_filename","img_mime_type") VALUES (1, 'The hithikers guide to the galaxy', 5, 't', '2014-02-27 22:10:58.048766', '2014-02-27 22:10:58.048766', NULL, NULL, NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "books" ("id","title","rating","read","created_at","updated_at","img_data","img_filename","img_mime_type") VALUES (2, 'test', 2, 'f', '2014-02-27 22:11:34.223805', '2014-02-27 22:11:34.223805', NULL, NULL, NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "books" ("id","title","rating","read","created_at","updated_at","img_data","img_filename","img_mime_type") VALUES (3, 'You', 4, NULL, '2014-02-27 22:18:23.780242', '2014-02-27 22:18:23.780242', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "books" ("id","title","rating","read","created_at","updated_at","img_data","img_filename","img_mime_type") VALUES (4, 'What', 2, 'f', '2014-02-27 22:19:57.889951', '2014-02-27 22:19:57.889951', NULL, NULL, NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "books" ("id","title","rating","read","created_at","updated_at","img_data","img_filename","img_mime_type") VALUES (5, '433', 2, 't', '2014-02-27 22:20:16.189722', '2014-02-27 22:20:16.189722', NULL, NULL, NULL)[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "abooks"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140228180900"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/books" for 127.0.0.1 at 2014-02-28 18:49:12 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (42.7ms)
+Completed 500 Internal Server Error in 53ms
+
+ActionView::Template::Error (undefined method `serve_books_path' for #<#<Class:0x007fcb2a284658>:0x007fcb2a27c3b8>):
+    15:       <td><%= book.title %></td>
+    16:       <td><%= book.rating %></td>
+    17:       <td><%= book.read  %></td>
+    18:       <td><%= image_tag serve_books_path(@book) %></td>
+    19:     </tr>
+    20:   <% end %>
+    21: </table>
+  app/views/books/index.html.erb:18:in `block in _app_views_books_index_html_erb___2921643839992618337_70255281142060'
+  app/views/books/index.html.erb:13:in `_app_views_books_index_html_erb___2921643839992618337_70255281142060'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.4ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2014-02-28 18:49:35 +0000
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (22.4ms)
+Completed 500 Internal Server Error in 25ms
+
+ActionView::Template::Error (undefined method `serve_book_path' for #<#<Class:0x007fcb2a284658>:0x007fcb2b30d150>):
+    15:       <td><%= book.title %></td>
+    16:       <td><%= book.rating %></td>
+    17:       <td><%= book.read  %></td>
+    18:       <td><%= image_tag serve_book_path(@book) %></td>
+    19:     </tr>
+    20:   <% end %>
+    21: </table>
+  app/views/books/index.html.erb:18:in `block in _app_views_books_index_html_erb___2921643839992618337_70255289840760'
+  app/views/books/index.html.erb:13:in `_app_views_books_index_html_erb___2921643839992618337_70255289840760'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.5ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.3ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2014-02-28 18:49:37 +0000
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (20.7ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined method `serve_book_path' for #<#<Class:0x007fcb2a284658>:0x007fcb2a0da528>):
+    15:       <td><%= book.title %></td>
+    16:       <td><%= book.rating %></td>
+    17:       <td><%= book.read  %></td>
+    18:       <td><%= image_tag serve_book_path(@book) %></td>
+    19:     </tr>
+    20:   <% end %>
+    21: </table>
+  app/views/books/index.html.erb:18:in `block in _app_views_books_index_html_erb___2921643839992618337_70255289840760'
+  app/views/books/index.html.erb:13:in `_app_views_books_index_html_erb___2921643839992618337_70255289840760'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.3ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2014-02-28 18:50:10 +0000
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (22.6ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (undefined method `serve' for #<#<Class:0x007fcb2a284658>:0x007fcb2a540b80>):
+    15:       <td><%= book.title %></td>
+    16:       <td><%= book.rating %></td>
+    17:       <td><%= book.read  %></td>
+    18:       <td><%= image_tag serve(@book) %></td>
+    19:     </tr>
+    20:   <% end %>
+    21: </table>
+  app/views/books/index.html.erb:18:in `block in _app_views_books_index_html_erb___2921643839992618337_70255282609000'
+  app/views/books/index.html.erb:13:in `_app_views_books_index_html_erb___2921643839992618337_70255282609000'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.2ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2014-02-28 18:50:12 +0000
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (18.6ms)
+Completed 500 Internal Server Error in 21ms
+
+ActionView::Template::Error (undefined method `serve' for #<#<Class:0x007fcb2a284658>:0x007fcb298402a0>):
+    15:       <td><%= book.title %></td>
+    16:       <td><%= book.rating %></td>
+    17:       <td><%= book.read  %></td>
+    18:       <td><%= image_tag serve(@book) %></td>
+    19:     </tr>
+    20:   <% end %>
+    21: </table>
+  app/views/books/index.html.erb:18:in `block in _app_views_books_index_html_erb___2921643839992618337_70255282609000'
+  app/views/books/index.html.erb:13:in `_app_views_books_index_html_erb___2921643839992618337_70255282609000'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.7ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2014-02-28 18:51:16 +0000
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (15.0ms)
+Completed 500 Internal Server Error in 17ms
+
+ActionView::Template::Error (undefined method `serve_books_path' for #<#<Class:0x007fcb2a284658>:0x007fcb2b2bd330>):
+    15:       <td><%= book.title %></td>
+    16:       <td><%= book.rating %></td>
+    17:       <td><%= book.read  %></td>
+    18:       <td><%= image_tag serve_books_path(book) %></td>
+    19:     </tr>
+    20:   <% end %>
+    21: </table>
+  app/views/books/index.html.erb:18:in `block in _app_views_books_index_html_erb___2921643839992618337_70255292726880'
+  app/views/books/index.html.erb:13:in `_app_views_books_index_html_erb___2921643839992618337_70255292726880'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.4ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (24.6ms)
+  Rendered books/new.html.erb within layouts/application (37.3ms)
+Completed 200 OK in 43ms (Views: 41.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:25 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 18:51:54 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"artic monkies?", "rating"=>"4", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2a244800 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-nh3mjs>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mBook Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "books" WHERE "books"."title" = 'artic monkies?' LIMIT 1[0m
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[35mSQL (5.8ms)[0m  INSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Fri, 28 Feb 2014 18:51:54 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 4], ["read", false], ["title", "artic monkies?"], ["updated_at", Fri, 28 Feb 2014 18:51:54 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/books/6
+Completed 302 Found in 27ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/books/6" for 127.0.0.1 at 2014-02-28 18:51:54 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBook Load (9.9ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered books/_book.html.erb (0.7ms)
+  Rendered books/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 22ms (Views: 8.5ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 18:51:55 +0000
+
+
+Started GET "/books/6" for 127.0.0.1 at 2014-02-28 18:53:28 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered books/_book.html.erb (8.6ms)
+  Rendered books/show.html.erb within layouts/application (9.2ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `serve' for #<#<Class:0x007fcb2a284658>:0x007fcb2b347468>):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= serve(@book) %>
+    16: </p>
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255289924060'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.9ms)
+
+
+Started GET "/books/6" for 127.0.0.1 at 2014-02-28 18:54:49 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered books/_book.html.erb (1.4ms)
+  Rendered books/show.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 38ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= serve(@book) %>
+    16: </p>
+  app/controllers/books_controller.rb:28:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255289924060'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.3ms)
+
+
+Started GET "/books/6" for 127.0.0.1 at 2014-02-28 18:55:00 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (3.3ms)
+  Rendered books/_book.html.erb (14.2ms)
+  Rendered books/show.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/books/6" for 127.0.0.1 at 2014-02-28 18:55:28 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.3ms)
+  Rendered books/_book.html.erb (42.2ms)
+  Rendered books/show.html.erb within layouts/application (43.2ms)
+Completed 200 OK in 49ms (Views: 48.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/5" for 127.0.0.1 at 2014-02-28 18:55:34 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "5"]]
+Sent data .jpg (0.2ms)
+  Rendered books/_book.html.erb (1.4ms)
+  Rendered books/show.html.erb within layouts/application (2.1ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (:type option required):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= image_tag serve %>
+    16: </p>
+  app/controllers/books_controller.rb:30:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255289757380'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.7ms)
+
+
+Started GET "/books/5" for 127.0.0.1 at 2014-02-28 18:57:31 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "5"]]
+Sent data .jpg (0.3ms)
+  Rendered books/_book.html.erb (1.6ms)
+  Rendered books/show.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (:type option required):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= image_tag serve %>
+    16: </p>
+  app/controllers/books_controller.rb:30:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255289757380'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.9ms)
+
+
+Started GET "/books/6" for 127.0.0.1 at 2014-02-28 18:57:38 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (1.9ms)
+  Rendered books/_book.html.erb (31.4ms)
+  Rendered books/show.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 59ms (Views: 55.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books/7" for 127.0.0.1 at 2014-02-28 18:57:40 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "7"]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find Book with id=7):
+  app/controllers/books_controller.rb:25:in `show'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.9ms)
+
+
+Started GET "/books/7" for 127.0.0.1 at 2014-02-28 18:57:46 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "7"]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Book with id=7):
+  app/controllers/books_controller.rb:25:in `show'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.1ms)
+
+
+Started GET "/books/7" for 127.0.0.1 at 2014-02-28 18:58:09 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "7"]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find Book with id=7):
+  app/controllers/books_controller.rb:25:in `show'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.6ms)
+
+
+Started GET "/books/6" for 127.0.0.1 at 2014-02-28 18:58:13 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered books/_book.html.erb (1.5ms)
+  Rendered books/show.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= image_tag serve(@book) %>
+    16: </p>
+  app/controllers/books_controller.rb:28:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255281791520'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.3ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (10.8ms)
+  Rendered books/new.html.erb within layouts/application (23.7ms)
+Completed 200 OK in 33ms (Views: 29.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:10 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:00:26 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"test", "rating"=>"3", "read"=>"1", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb29944250 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-f8cpn>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.2ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = 'test' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered books/_form.html.erb (2.2ms)
+  Rendered books/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 30ms (Views: 21.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:00:27 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:00:38 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"test4", "rating"=>"3", "read"=>"1", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2a53be78 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1104j2f>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mBook Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "books" WHERE "books"."title" = 'test4' LIMIT 1[0m
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Fri, 28 Feb 2014 19:00:38 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 3], ["read", true], ["title", "test4"], ["updated_at", Fri, 28 Feb 2014 19:00:38 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/books/7
+Completed 302 Found in 7ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/books/7" for 127.0.0.1 at 2014-02-28 19:00:38 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "7"]]
+  Rendered books/_book.html.erb (0.9ms)
+  Rendered books/show.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= image_tag serve(@book) %>
+    16: </p>
+  app/controllers/books_controller.rb:28:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255281791520'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.5ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (18.4ms)
+  Rendered books/new.html.erb within layouts/application (44.8ms)
+Completed 200 OK in 73ms (Views: 50.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:03:16 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:03:27 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"help/", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2a33ef08 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-tyj2ct>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+  Rendered text template (0.0ms)
+Unpermitted parameters: data
+Completed 500 Internal Server Error in 3ms
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/books_controller.rb:12:in `block in create'
+  app/controllers/books_controller.rb:9:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:04:22 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"help/", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb29a3d3a0 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1j1mr9w>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+  Rendered text template (0.0ms)
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.1ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = 'help/' LIMIT 1
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 19:04:22 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 2], ["read", false], ["title", "help/"], ["updated_at", Fri, 28 Feb 2014 19:04:22 UTC +00:00]]
+  [1m[35m (7.8ms)[0m  commit transaction
+Redirected to 
+Completed 500 Internal Server Error in 24ms
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/books_controller.rb:19:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.8ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:04:49 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"help/", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2a0b9be8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-s8q92n>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+  Rendered text template (0.1ms)
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.1ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = 'help/' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 200 OK in 21ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:10:15 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"help/", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2a5619e8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-7h0tns>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+  Rendered text template (0.0ms)
+Unpermitted parameters: data
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mBook Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "books" WHERE "books"."title" = 'help/' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 11ms
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/books_controller.rb:21:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.6ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:10:43 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"help/", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b425fb0 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-11b5gd5>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+  Rendered text template (0.0ms)
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.1ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = 'help/' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:11:04 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"help/", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2a4f1300 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1uc90vf>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+  Rendered text template (0.0ms)
+Unpermitted parameters: data
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mBook Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "books" WHERE "books"."title" = 'help/' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"help/", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b91eaf8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1hli56j>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.4ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = 'help/' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered books/_form.html.erb (2.5ms)
+  Rendered books/new.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 30ms (Views: 18.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:24:04 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:24:14 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"help..", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb29b06980 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1wp73kd>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mBook Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "books" WHERE "books"."title" = 'help..' LIMIT 1[0m
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Fri, 28 Feb 2014 19:24:14 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 2], ["read", false], ["title", "help.."], ["updated_at", Fri, 28 Feb 2014 19:24:14 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/books/9
+Completed 302 Found in 11ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:24:14 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered books/_book.html.erb (1.9ms)
+  Rendered books/show.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= image_tag serve(@book) %>
+    16: </p>
+  app/controllers/books_controller.rb:28:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255281791520'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.0ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:25:00 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.4ms)
+  Rendered books/_book.html.erb (26.2ms)
+  Rendered books/show.html.erb within layouts/application (27.1ms)
+Completed 200 OK in 32ms (Views: 30.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:41:26 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.3ms)
+  Rendered books/_book.html.erb (29.1ms)
+  Rendered books/show.html.erb within layouts/application (30.6ms)
+Completed 200 OK in 39ms (Views: 36.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:42:03 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (1.4ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.3ms)
+  Rendered books/_book.html.erb (1.9ms)
+  Rendered books/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 18ms
+
+ActionView::Template::Error (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= image_tag serve %>
+    16: </p>
+  app/controllers/books_controller.rb:31:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255293726520'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.8ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+  Rendered books/_book.html.erb (24.6ms)
+  Rendered books/show.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 38ms (Views: 29.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:42:18 +0000
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+  Rendered books/_book.html.erb (4.8ms)
+  Rendered books/show.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 20ms (Views: 11.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:08 +0000
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+  Rendered books/_book.html.erb (4.9ms)
+  Rendered books/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 17ms (Views: 9.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:43:36 +0000
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:44:10 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered books/_book.html.erb (10.3ms)
+  Rendered books/show.html.erb within layouts/application (10.8ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::Template::Error (undefined method `data' for #<Book:0x007fcb2e000d60>):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= image_tag serve %>
+    16: </p>
+  app/controllers/books_controller.rb:30:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255293726520'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:44:44 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.3ms)
+  Rendered books/_book.html.erb (34.5ms)
+  Rendered books/show.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 47ms (Views: 39.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:45:19 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.3ms)
+  Rendered books/_book.html.erb (6.1ms)
+  Rendered books/show.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:45:21 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.4ms)
+  Rendered books/_book.html.erb (5.8ms)
+  Rendered books/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  Rendered books/_book.html.erb (0.6ms)
+  Rendered books/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:45:41 +0000
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered books/_book.html.erb (0.3ms)
+  Rendered books/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 17ms (Views: 8.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:51:15 +0000
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:51:34 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data  (0.3ms)
+  Rendered books/_book.html.erb (37.6ms)
+  Rendered books/show.html.erb within layouts/application (38.5ms)
+Completed 200 OK in 43ms (Views: 42.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 19:52:21 +0000
+Processing by BooksController#new as HTML
+ERROR: compiling _app_views_books__form_html_erb__2797217608749820770_70255282573060 RAISED /Users/Alex/Dropbox/projects/Books organiser/app/views/books/_form.html.erb:2: syntax error, unexpected keyword_do_block, expecting ':'
+...:html=? {:multipart => true} do |f| @output_buffer.safe_appe...
+...                               ^
+/Users/Alex/Dropbox/projects/Books organiser/app/views/books/_form.html.erb:8: syntax error, unexpected keyword_do_block, expecting keyword_end
+';       @book.errors.full_messages.each do |msg| 
+                                           ^
+/Users/Alex/Dropbox/projects/Books organiser/app/views/books/_form.html.erb:35: syntax error, unexpected keyword_end, expecting end-of-input
+';   end 
+        ^
+Function body:           def _app_views_books__form_html_erb__2797217608749820770_70255282573060(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "books/_form";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_append='<div id=\'container\'>
+  ';@output_buffer.append=  form_for :book, url: books_path, :html=? {:multipart => true} do |f| @output_buffer.safe_append='
+';     if @book.errors.any? 
+@output_buffer.safe_append='    <div id="error_explanation">
+      <h2>';@output_buffer.append=( pluralize(@book.errors.count, "error") );@output_buffer.safe_append=' prohibited
+        this book from being saved:</h2>
+      <ul>
+';       @book.errors.full_messages.each do |msg| 
+@output_buffer.safe_append='        <li>';@output_buffer.append=( msg );@output_buffer.safe_append='</li>
+';       end 
+@output_buffer.safe_append='      </ul>
+    </div>
+';     end 
+@output_buffer.safe_append='    <p>
+      ';@output_buffer.append=( f.text_field :title, :placeholder => "Title" );@output_buffer.safe_append='
+    </p>
+ 
+    <p>
+      ';@output_buffer.append=( f.text_field :rating, :placeholder => "Rating" );@output_buffer.safe_append='
+    </p>
+
+    <p>
+      ';@output_buffer.append=( f.label "read" );@output_buffer.safe_append='
+      ';@output_buffer.append=( f.check_box :read );@output_buffer.safe_append='
+    </p>
+    
+    <p>
+      ';@output_buffer.append=( f.label "cover" );@output_buffer.safe_append='
+      ';@output_buffer.append=( f.file_field :data );@output_buffer.safe_append='
+    </p>
+
+    <p>
+      ';@output_buffer.append=( f.submit );@output_buffer.safe_append='
+    </p>
+';   end 
+@output_buffer.safe_append='</div>';@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `module_eval'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `compile'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:248:in `block in compile!'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `synchronize'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `compile!'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:142:in `block in render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:161:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:141:in `render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/partial_renderer.rb:306:in `render_partial'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/partial_renderer.rb:279:in `block in render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/partial_renderer.rb:278:in `render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:47:in `render_partial'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/helpers/rendering_helper.rb:27:in `render'
+/Users/Alex/Dropbox/projects/Books organiser/app/views/books/new.html.erb:5:in `_app_views_books_new_html_erb__2420899790205452633_70255290659860'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:143:in `block in render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:161:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:141:in `render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:17:in `render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:42:in `render_template'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:23:in `render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:127:in `_render_template'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:97:in `render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:189:in `process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:403:in `_run__1566000606685815056__process_action__callbacks'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:136:in `process'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:44:in `process'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal.rb:195:in `dispatch'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal.rb:231:in `block in action'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:48:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:71:in `block in call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `each'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:680:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/flash.rb:241:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activerecord-4.0.2/lib/active_record/query_cache.rb:36:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activerecord-4.0.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activerecord-4.0.2/lib/active_record/migration.rb:369:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:373:in `_run__2930835062110688173__call__callbacks'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.0.2/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `block in call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:25:in `tagged'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `tagged'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/activesupport-4.0.2/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/static.rb:64:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.0.2/lib/rails/engine.rb:511:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.0.2/lib/rails/application.rb:97:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+/Users/Alex/.rbenv/versions/2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+  Rendered books/_form.html.erb (33.4ms)
+  Rendered books/new.html.erb within layouts/application (45.8ms)
+Completed 500 Internal Server Error in 53ms
+
+ActionView::Template::Error (/Users/Alex/Dropbox/projects/Books organiser/app/views/books/_form.html.erb:2: syntax error, unexpected keyword_do_block, expecting ':'
+...:html=? {:multipart => true} do |f| @output_buffer.safe_appe...
+...                               ^
+/Users/Alex/Dropbox/projects/Books organiser/app/views/books/_form.html.erb:8: syntax error, unexpected keyword_do_block, expecting keyword_end
+';       @book.errors.full_messages.each do |msg| 
+                                           ^
+/Users/Alex/Dropbox/projects/Books organiser/app/views/books/_form.html.erb:35: syntax error, unexpected keyword_end, expecting end-of-input
+';   end 
+        ^):
+    1: <div id='container'>
+    2:   <%= form_for :book, url: books_path, :html=? {:multipart => true} do |f| %>
+    3:     <% if @book.errors.any? %>
+    4:     <div id="error_explanation">
+    5:       <h2><%= pluralize(@book.errors.count, "error") %> prohibited
+  app/views/books/new.html.erb:5:in `_app_views_books_new_html_erb__2420899790205452633_70255290659860'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.9ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (2.5ms)
+  Rendered books/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:52:56 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 19:53:08 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"asdf", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b704060 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-g0eimj>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.6ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = 'asdf' LIMIT 1
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 19:53:08 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 2], ["read", false], ["title", "asdf"], ["updated_at", Fri, 28 Feb 2014 19:53:08 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/10
+Completed 302 Found in 16ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/books/10" for 127.0.0.1 at 2014-02-28 19:53:08 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "10"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "10"]]
+  Rendered text template (0.0ms)
+Sent data  (0.9ms)
+  Rendered books/_book.html.erb (38.3ms)
+  Rendered books/show.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 49ms (Views: 47.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 19:54:43 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (6.3ms)
+  Rendered books/new.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 30ms (Views: 24.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:54:44 +0000
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:54:46 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered books/_book.html.erb (3.2ms)
+  Rendered books/show.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (string contains null byte):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= serve %>
+    16: </p>
+  app/controllers/books_controller.rb:30:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255314966960'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.5ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.3ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered books/_book.html.erb (2.1ms)
+  Rendered books/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 22ms (Views: 10.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:55:48 +0000
+
+
+Started GET "/books/8" for 127.0.0.1 at 2014-02-28 19:56:04 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "8"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "8"]]
+  Rendered books/_book.html.erb (1.6ms)
+  Rendered books/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 19:56:05 +0000
+
+
+Started GET "/books/8" for 127.0.0.1 at 2014-02-28 19:57:37 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "8"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "8"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.4ms)
+  Rendered books/_book.html.erb (7.5ms)
+  Rendered books/show.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 21ms (Views: 13.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:57:40 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data Arctic Monkeys-Favourite Worst Nightmare [Front].jpg.jpg (0.4ms)
+  Rendered books/_book.html.erb (8.3ms)
+  Rendered books/show.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:59:01 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data  (0.4ms)
+  Rendered books/_book.html.erb (9.5ms)
+  Rendered books/show.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 28ms (Views: 16.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 19:59:10 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (1.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data  (0.3ms)
+  Rendered books/_book.html.erb (6.3ms)
+  Rendered books/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 20:04:09 +0000
+
+SyntaxError (/Users/Alex/Dropbox/projects/Books organiser/app/controllers/books_controller.rb:10: syntax error, unexpected ':', expecting keyword_then or ';' or '\n'
+/Users/Alex/Dropbox/projects/Books organiser/app/controllers/books_controller.rb:44: syntax error, unexpected keyword_end, expecting end-of-input):
+  activesupport (4.0.2) lib/active_support/dependencies.rb:424:in `load'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:424:in `block in load_file'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:616:in `new_constants_in'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:423:in `load_file'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:324:in `require_or_load'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:463:in `load_missing_constant'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:184:in `const_missing'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `const_get'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `block in constantize'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `each'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `inject'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `constantize'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:535:in `get'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:566:in `constantize'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2930835062110688173__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 20:07:38 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data  (0.4ms)
+  Rendered books/_book.html.erb (6.6ms)
+  Rendered books/show.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 21ms (Views: 11.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/books/9" for 127.0.0.1 at 2014-02-28 20:07:59 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "9"]]
+  Rendered text template (0.0ms)
+Sent data  (0.6ms)
+  Rendered books/_book.html.erb (9.1ms)
+  Rendered books/show.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 21ms (Views: 13.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (2.3ms)
+  Rendered books/new.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 18ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:08:03 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:08:11 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"234324", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b0c6310 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-17bwrk3>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `falsh' for #<BooksController:0x007fcb2b0d1fa8>):
+  app/controllers/books_controller.rb:11:in `block in create'
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.6ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (6.0ms)
+  Rendered books/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:09:25 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:09:32 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"2313", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2f068400 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1b5d5nh>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.4ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = '2313' LIMIT 1
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 20:09:32 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 2], ["read", false], ["title", "2313"], ["updated_at", Fri, 28 Feb 2014 20:09:32 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/11
+Completed 302 Found in 10ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/books/11" for 127.0.0.1 at 2014-02-28 20:09:32 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "11"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "11"]]
+  Rendered text template (0.0ms)
+Sent data  (0.5ms)
+  Rendered books/_book.html.erb (11.3ms)
+  Rendered books/show.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (12.4ms)
+  Rendered books/new.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 35ms (Views: 30.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:12:28 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:12:42 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"32432", "rating"=>"3", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b9c39e0 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1kh3a1k>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.1ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = '32432' LIMIT 1
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 20:12:42 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 3], ["read", false], ["title", "32432"], ["updated_at", Fri, 28 Feb 2014 20:12:42 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/12
+Completed 302 Found in 7ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/books/12" for 127.0.0.1 at 2014-02-28 20:12:42 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mBook Load (0.8ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "12"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "12"]]
+  Rendered text template (0.0ms)
+Sent data  (0.6ms)
+  Rendered books/_book.html.erb (18.8ms)
+  Rendered books/show.html.erb within layouts/application (20.4ms)
+Completed 200 OK in 35ms (Views: 31.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/books/12" for 127.0.0.1 at 2014-02-28 20:14:05 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "12"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "12"]]
+  Rendered text template (0.0ms)
+Sent data  (0.7ms)
+  Rendered books/_book.html.erb (8.1ms)
+  Rendered books/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 28ms (Views: 13.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (3.3ms)
+  Rendered books/new.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:14:10 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:14:26 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"299", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b9cd8c8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-a30cua>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 500 Internal Server Error in 2ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: data):
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.5ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:16:01 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"299", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb29b99668 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-10pauq3>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 500 Internal Server Error in 6ms
+
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:18:56 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"299", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2e349df0 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1dxyjsb>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 500 Internal Server Error in 13ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: data):
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.9ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (3.5ms)
+  Rendered books/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:24:25 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:24:37 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"232423234234234", "rating"=>"3", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb29a25390 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-19hkm81>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: data):
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.6ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:24:55 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"232423234234234", "rating"=>"3", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2a15d6a8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-tsy3gi>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `permit!' for nil:NilClass):
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.9ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (7.9ms)
+  Rendered books/new.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 26ms (Views: 23.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:25:00 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:25:07 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"dsf", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2e0e3520 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1tqe2oy>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `permit!' for nil:NilClass):
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.8ms)
+
+
+Started GET "/books/13" for 127.0.0.1 at 2014-02-28 20:25:11 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "13"]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find Book with id=13):
+  app/controllers/books_controller.rb:26:in `show'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.2ms)
+
+
+Started GET "/books/11" for 127.0.0.1 at 2014-02-28 20:25:17 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[35mBook Load (1.2ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "11"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "11"]]
+  Rendered text template (0.0ms)
+Sent data  (0.4ms)
+  Rendered books/_book.html.erb (6.4ms)
+  Rendered books/show.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2014-02-28 20:25:20 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Sent data  (0.3ms)
+  Rendered books/_book.html.erb (1.7ms)
+  Rendered books/show.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (:type option required):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= serve %>
+    16: </p>
+  app/controllers/books_controller.rb:32:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255314966960'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.4ms)
+
+
+Started GET "/books/12" for 127.0.0.1 at 2014-02-28 20:25:22 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "12"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "12"]]
+  Rendered text template (0.0ms)
+Sent data  (0.3ms)
+  Rendered books/_book.html.erb (6.0ms)
+  Rendered books/show.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/13" for 127.0.0.1 at 2014-02-28 20:25:23 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "13"]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Book with id=13):
+  app/controllers/books_controller.rb:26:in `show'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.9ms)
+
+
+Started GET "/books/" for 127.0.0.1 at 2014-02-28 20:26:11 +0000
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (2.7ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (25.2ms)
+Completed 500 Internal Server Error in 28ms
+
+ActionView::Template::Error (undefined method `serve_books_path' for #<#<Class:0x007fcb2b687ad8>:0x007fcb2a616a78>):
+    15:       <td><%= book.title %></td>
+    16:       <td><%= book.rating %></td>
+    17:       <td><%= book.read  %></td>
+    18:       <td><%= image_tag serve_books_path(book) %></td>
+    19:     </tr>
+    20:   <% end %>
+    21: </table>
+  app/views/books/index.html.erb:18:in `block in _app_views_books_index_html_erb___2921643839992618337_70255292726880'
+  app/views/books/index.html.erb:13:in `_app_views_books_index_html_erb___2921643839992618337_70255292726880'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.6ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (1.6ms)
+  Rendered books/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:26:24 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:26:32 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"2324232342342342", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b604660 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1sv8qpb>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `permit!' for nil:NilClass):
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.1ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:27:50 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"2324232342342342", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2ba98ed8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1gek6k6>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mBook Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "books" WHERE "books"."title" = '2324232342342342' LIMIT 1[0m
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[35mSQL (8.0ms)[0m  INSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Fri, 28 Feb 2014 20:27:50 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 2], ["read", false], ["title", "2324232342342342"], ["updated_at", Fri, 28 Feb 2014 20:27:50 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/books/13
+Completed 302 Found in 20ms (ActiveRecord: 9.3ms)
+
+
+Started GET "/books/13" for 127.0.0.1 at 2014-02-28 20:27:50 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mBook Load (0.7ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "13"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "13"]]
+  Rendered text template (0.0ms)
+Sent data  (0.4ms)
+  Rendered books/_book.html.erb (8.8ms)
+  Rendered books/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books/13" for 127.0.0.1 at 2014-02-28 20:28:10 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "13"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "13"]]
+  Rendered text template (0.0ms)
+Sent data  (0.4ms)
+  Rendered books/_book.html.erb (8.3ms)
+  Rendered books/show.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (1.7ms)
+  Rendered books/new.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:28:21 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:28:29 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"232321", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb29b06188 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-6z0gzh>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mBook Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "books" WHERE "books"."title" = '232321' LIMIT 1[0m
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Fri, 28 Feb 2014 20:28:29 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 2], ["read", false], ["title", "232321"], ["updated_at", Fri, 28 Feb 2014 20:28:29 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/books/14
+Completed 302 Found in 6ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/books/14" for 127.0.0.1 at 2014-02-28 20:28:29 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  Rendered text template (0.0ms)
+Sent data  (0.4ms)
+  Rendered books/_book.html.erb (7.2ms)
+  Rendered books/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/14" for 127.0.0.1 at 2014-02-28 20:35:08 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  Rendered text template (0.1ms)
+Sent data  (5.0ms)
+  Rendered books/_book.html.erb (15.8ms)
+  Rendered books/show.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 40ms (Views: 24.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:35:11 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (1.9ms)
+  Rendered books/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:12 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"99", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b60a498 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1t6c6ev>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mBook Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "books" WHERE "books"."title" = '99' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered books/_form.html.erb (2.1ms)
+  Rendered books/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 20ms (Views: 15.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:24 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:35:29 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"999", "rating"=>"2", "read"=>"0"}, "commit"=>"Save Book"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.2ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = '999' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "books" ("created_at", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 20:35:29 UTC +00:00], ["rating", 2], ["read", false], ["title", "999"], ["updated_at", Fri, 28 Feb 2014 20:35:29 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/15
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/books/15" for 127.0.0.1 at 2014-02-28 20:35:29 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "15"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "15"]]
+Sent data  (0.4ms)
+  Rendered books/_book.html.erb (2.1ms)
+  Rendered books/show.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (:type option required):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= serve %>
+    16: </p>
+  app/controllers/books_controller.rb:32:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255314966960'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:35:31 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:35:40 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"9999", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2baf17b8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-8t1yuc>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.1ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = '9999' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("created_at", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 20:35:40 UTC +00:00], ["rating", 2], ["read", false], ["title", "9999"], ["updated_at", Fri, 28 Feb 2014 20:35:40 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/16
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/books/16" for 127.0.0.1 at 2014-02-28 20:35:40 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "16"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "16"]]
+Sent data  (0.3ms)
+  Rendered books/_book.html.erb (2.3ms)
+  Rendered books/show.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (:type option required):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= serve %>
+    16: </p>
+  app/controllers/books_controller.rb:32:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255314966960'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.0ms)
+
+
+Started GET "/books/16" for 127.0.0.1 at 2014-02-28 20:36:13 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "16"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "16"]]
+Sent data  (0.2ms)
+  Rendered books/_book.html.erb (2.7ms)
+  Rendered books/show.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (:type option required):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= img_tag serve %>
+    16: </p>
+  app/controllers/books_controller.rb:32:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255292818880'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.1ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (1.6ms)
+  Rendered books/new.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:37:36 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:37:47 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"23299", "rating"=>"2", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb29c801f8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1xymgw3>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.1ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = '23299' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("created_at", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 20:37:47 UTC +00:00], ["rating", 2], ["read", false], ["title", "23299"], ["updated_at", Fri, 28 Feb 2014 20:37:47 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/17
+Completed 302 Found in 5ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/books/17" for 127.0.0.1 at 2014-02-28 20:37:47 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "17"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "17"]]
+Sent data  (0.6ms)
+  Rendered books/_book.html.erb (2.6ms)
+  Rendered books/show.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (:type option required):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= img_tag serve %>
+    16: </p>
+  app/controllers/books_controller.rb:32:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255292818880'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.8ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.3ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (13.5ms)
+  Rendered books/new.html.erb within layouts/application (29.4ms)
+Completed 200 OK in 44ms (Views: 40.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:39:23 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:39:34 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"3HAS", "rating"=>"3", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2baf2de8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-gqxk81>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Back].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Back].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 400 Bad Request in 1ms
+
+ActionController::ParameterMissing (param not found: id):
+  app/controllers/books_controller.rb:42:in `book_params'
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.3ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:40:23 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"3HAS", "rating"=>"3", "read"=>"0", "data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b3341d8 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1lqt9n2>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Back].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Back].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.1ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = '3HAS' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("created_at", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 20:40:23 UTC +00:00], ["rating", 3], ["read", false], ["title", "3HAS"], ["updated_at", Fri, 28 Feb 2014 20:40:23 UTC +00:00]]
+  [1m[35m (7.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/18
+Completed 302 Found in 19ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/books/18" for 127.0.0.1 at 2014-02-28 20:40:23 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "18"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "18"]]
+Sent data  (0.3ms)
+  Rendered books/_book.html.erb (2.5ms)
+  Rendered books/show.html.erb within layouts/application (3.7ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (:type option required):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= img_tag serve %>
+    16: </p>
+  app/controllers/books_controller.rb:32:in `serve'
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255292818880'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.0ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (2.9ms)
+  Rendered books/new.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 17ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:40:27 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:40:37 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"343A", "rating"=>"2", "read"=>"0", "img_data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2b71f338 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-6mj8d2>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[img_data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `encoding' for #<ActionDispatch::Http::UploadedFile:0x007fcb2b71f338>):
+  app/controllers/books_controller.rb:8:in `create'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.1ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:44:18 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"343A", "rating"=>"2", "read"=>"0", "img_data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2bb38230 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1db4fxw>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[img_data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: img_data
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.2ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = '343A' LIMIT 1
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 20:44:18 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 2], ["read", false], ["title", "343A"], ["updated_at", Fri, 28 Feb 2014 20:44:18 UTC +00:00]]
+  [1m[35m (8.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/19
+Completed 302 Found in 31ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/books/19" for 127.0.0.1 at 2014-02-28 20:44:18 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "19"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "19"]]
+  Rendered text template (0.0ms)
+Sent data  (0.5ms)
+  Rendered books/_book.html.erb (43.5ms)
+  Rendered books/show.html.erb within layouts/application (44.4ms)
+Completed 500 Internal Server Error in 48ms
+
+ActionView::Template::Error (undefined method `img_tag' for #<#<Class:0x007fcb2e2b1438>:0x007fcb2e2b06c8>):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= img_tag serve %>
+    16: </p>
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255292818880'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.0ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2014-02-28 20:44:36 +0000
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (1.9ms)
+  Rendered books/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 15ms (Views: 14.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2014-02-28 20:44:36 +0000
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-02-28 20:44:37 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-28 20:44:37 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-28 20:44:37 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-28 20:44:37 +0000
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2014-02-28 20:44:37 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-28 20:44:37 +0000
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-02-28 20:44:37 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-28 20:44:37 +0000
+
+
+Started POST "/books" for 127.0.0.1 at 2014-02-28 20:44:45 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nG/8tQcb7bTpVb4sHbBQnI3fwc1n6zTp+HeTZZuwEVM=", "book"=>{"title"=>"34ASDF", "rating"=>"3", "read"=>"0", "img_data"=>#<ActionDispatch::Http::UploadedFile:0x007fcb2a4ce800 @tempfile=#<Tempfile:/var/folders/sq/h10ly8t578511d46l5xfvmvh0000gn/T/RackMultipart20140228-581-1hckhci>, @original_filename="Arctic Monkeys-Favourite Worst Nightmare [Front].jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[img_data]\"; filename=\"Arctic Monkeys-Favourite Worst Nightmare [Front].jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save Book"}
+Unpermitted parameters: img_data
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mBook Exists (0.2ms)[0m  SELECT 1 AS one FROM "books" WHERE "books"."title" = '34ASDF' LIMIT 1
+Binary data inserted for `string` type on column `img_mime_type`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "books" ("created_at", "img_data", "img_filename", "img_mime_type", "rating", "read", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Feb 2014 20:44:45 UTC +00:00], ["img_data", "<40932 bytes of binary data>"], ["img_filename", "Arctic Monkeys-Favourite Worst Nightmare [Front].jpg"], ["img_mime_type", "image/jpeg"], ["rating", 3], ["read", false], ["title", "34ASDF"], ["updated_at", Fri, 28 Feb 2014 20:44:45 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/books/20
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/books/20" for 127.0.0.1 at 2014-02-28 20:44:45 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "20"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "20"]]
+  Rendered text template (0.0ms)
+Sent data  (0.6ms)
+  Rendered books/_book.html.erb (46.8ms)
+  Rendered books/show.html.erb within layouts/application (48.1ms)
+Completed 500 Internal Server Error in 52ms
+
+ActionView::Template::Error (undefined method `img_tag' for #<#<Class:0x007fcb2e2b1438>:0x007fcb2b113e58>):
+    12: </p>
+    13: <p>
+    14:   <strong>Cover:</strong>
+    15:   <%= img_tag serve %>
+    16: </p>
+  app/views/books/_book.html.erb:15:in `_app_views_books__book_html_erb__3692997038460493444_70255292818880'
+  app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb__3624696215026997691_70255283203640'
+
+
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.1ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /Users/Alex/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (24.7ms)

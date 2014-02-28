@@ -1,7 +1,10 @@
 Library::Application.routes.draw do
 
   resources :books
-  
+  resources :photos do
+    get "serve", :on => :member
+  end 
+ 
   root "welcome#index"
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
