@@ -5,14 +5,17 @@ class BooksController < ApplicationController
   end
 
   def create
+
+    if params[:book][:img_data]
+      data = params[:book][:img_data].read
+      original_filename = params[:book][:img_data].original_filename
+      content_type = params[:book][:img_data].content_type
+    end
     @book = Book.new(book_params) do |t|
 
-      if params[:book][:img_data]
-        puts "**************"
-        t.img_data      = params[:book][:img_data].read
-        t.img_filename  = params[:book][:img_data].original_filename
-        t.img_mime_type = params[:book][:img_data].content_type
-      end
+      t.img_data      = data
+      t.img_filename  = original_filename
+      t.img_mime_type = content_type
     end    
 
     if @book.save
@@ -29,7 +32,7 @@ class BooksController < ApplicationController
   def serve
     @book = Book.find(params[:id])
 
-    send_data(@book.img_data, :type => @book.img_mime_type, :disposition => "inline")
+    send_data(@book.img_data, :type => @book.img_mime_type, :filename => @book.img_filename, :disposition => "inline")
   end
   helper_method :serve
 
@@ -39,7 +42,7 @@ class BooksController < ApplicationController
 
   private
     def book_params
-      params.require(:book).permit(:title, :rating, :read)#, :img_data)
+      params.require(:book).permit(:title, :rating, :read, :img_data)
     end
 
 end

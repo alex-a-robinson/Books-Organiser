@@ -1,6 +1,6 @@
 <div id='container'>
-  <%= form_for :book, url: books_path, :html => {:multipart => true} do |f| %>
-    <% if @book.errors.any? %>
+  <%= form_for @book, :html => {:multipart => true }, url: books_path do |f| %> 
+  <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book.errors.count, "error") %> prohibited
         this book from being saved:</h2>
